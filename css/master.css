@@ -1,0 +1,20 @@
+.jumbotron {
+  background-color: #3d3f7d;
+  color: #fff;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+#skill-options {
+  color: #ffffff;
+  background-color: #000000;
+  border: #000000;
+}
+
+.table tbody tr:hover td, .table tbody tr:hover th {
+  background-color: #eeeeea;
+}
