@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="userApp">
 <head>
   <meta charset="utf-8">
   <title>Connection</title>
@@ -12,7 +12,7 @@
   <script type="text/javascript" src="js/angular.min.js"></script>
   <script type="text/javascript" src="controllers/profileController.js"></script>
 </head>
-<body id="home" ng-app="userApp" ng-controller="userCtrl">
+<body id="home" ng-controller="userCtrl">
   <!-- Navigation Bar -->
   <nav class="navbar navbar-inverse" style="box-shadow: 0px 1px 5px #222222;">
     <div class="container-fluid">
@@ -55,6 +55,11 @@
         <p><a href="#">Profile</a></p>
         <img src="images/default_profile.jpg" class="img-circle" height="100" width="100" alt="Avatar" />
       </div>
+      <div><a href="createProfile.htm" class="btn btn-primary">Edit Profile</a> </div>
+      <div class="text-center">
+        <a href="#" ng-click="edit(expert._id)" data-toggle="modal" data-target="#myModal">Edit Profile</a>
+        {{expert.name}}
+      </div>
       <div class="well">
         <p><a href="#">Skills</a></p>
       </div>
@@ -71,17 +76,22 @@
                     <th>Name</th>
                     <th>Skills</th>
                     <th>Experience</th>
+                    <th>Current Project</th>
                     <th>Profile</th>
                     <th>Role</th>
                   </tr>
                 </thead>
-                <tbody ng-repeat="user in users | filter:userSearch">
+                <tbody ng-repeat="expert in experts | filter:userSearch">
                   <tr class="table-condensed text-left">
-                    <td>{{user.name}}</td>
-                    <td>{{user.skills}}</td>
-                    <td>{{user.experience}}</td>
-                    <td>{{user.profile}}</td>
-                    <td>{{user.role}}</td>
+                    <td>{{expert.name}}</td>
+                    <td>{{expert.skills}}</td>
+                    <td>{{expert.experience}}</td>
+                    <td>{{expert.currentproject}}</td>
+                    <td>{{expert.profile}}</td>
+                    <td>{{expert.role}}</td>
+                    <div class="text-center">
+                      <a href="#" ng-click="edit(expert._id)" data-toggle="modal" data-target="#myModal">Edit Profile</a>
+                    </div>
                   </tr>
                 </tbody>
               </table>
@@ -92,5 +102,41 @@
   </div>
 </div>
 </div>
+
+  <!-- Update Model -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Update Profile</h4>
+        </div>
+        <form class="form-update" action="expert.htm">
+          <div class="modal-body">
+            <label>Full Name :</label>
+            <input type="text" class="form-control" name="name" placeholder="Name"  ng-model="expert.name" required autofocus>
+            <label>Skills :</label>
+            <input type="text" class="form-control" ng-model="expert.skills">
+            <label>Experience :</label>
+            <input type="text" class="form-control" ng-model="expert.experience">
+            <label>Current Project :</label>
+            <input type="text" class="form-control" ng-model="expert.currentproject">
+            <label>Profile :</label>
+            <input type="text" class="form-control" ng-model="expert.profile">
+            <label>Role :</label>
+            <input type="text" class="form-control" ng-model="expert.role">
+
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-default btn-primary" type="submit" ng-click="updateProfile()">Submit </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- End Modal -->
 </body>
 </html>

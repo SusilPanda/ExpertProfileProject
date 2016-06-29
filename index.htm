@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="userApp">
 <head>
   <meta charset="utf-8">
   <title>Connection</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/bootstrap.min.css"  media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="css/bootstrap.min.css"  media="screen" title="no title" charset="utf-8">k
   <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
   <script type="text/javascript" src="js/jquery-2.2.2.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -40,7 +40,7 @@
   </div>
 
   <!-- Register Model -->
-  <div id="myModal" class="modal fade" role="dialog">
+  <div id="myModal" class="modal fade" role="dialog" ng-controller="userCtrl">
     <div class="modal-dialog">
 
       <!-- Modal content-->
@@ -51,24 +51,25 @@
         </div>
         <form class="form-register" action="index.htm">
           <div class="modal-body">
-            <input type="text" class="form-control" name="name" placeholder="Name" required autofocus>
+            <input type="text" class="form-control" name="name" placeholder="Name"  ng-model="expert.name" required autofocus>
             <br>
             <input type="email" class="form-control" placeholder="Email Address" required>
             <br>
             <input type="password" class="form-control" placeholder="Password" required>
             <br>
-            <input type="text" class="form-control" placeholder="Skills">
+            <input type="text" class="form-control" ng-model="expert.skills" placeholder="Skills">
             <br>
-            <input type="text" class="form-control" placeholder="Experience">
+            <input type="text" class="form-control" ng-model="expert.experience" placeholder="Experience">
             <br>
-            <input type="text" class="form-control" placeholder="Profile">
+            <input type="text" class="form-control" ng-model="expert.currentproject" placeholder="Current Project">
             <br>
-            <input type="text" class="form-control" placeholder="Role">
+            <input type="text" class="form-control" ng-model="expert.profile" placeholder="Profile">
             <br>
-            <input type="text" class="form-control" placeholder="Current Project">
+            <input type="text" class="form-control" ng-model="expert.role" placeholder="Role">
+
           </div>
           <div class="modal-footer">
-            <button class="btn btn-default btn-primary" type="submit">Submit </button>
+            <button class="btn btn-default btn-primary" type="submit" ng-click="addProfile()">Submit </button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </form>

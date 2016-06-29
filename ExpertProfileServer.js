@@ -30,4 +30,13 @@ app.post('/create', function(req, res){
     });
 });
 
+app.get('/getProfile/:id', function(req, res){
+    console.log("I got a get Request");
+    var id = req.params.id;
+    console.log();
+    db.expertprofiles.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
+        res.json(doc);
+        console.log(err);
+    });
+});
 app.listen(3033);
