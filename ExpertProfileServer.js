@@ -31,7 +31,7 @@ app.post('/create', function(req, res){
 });
 
 app.get('/getProfile/:id', function(req, res){
-    console.log("I got a get Request");
+    console.log("got a get Request");
     var id = req.params.id;
     console.log();
     db.expertprofiles.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
@@ -39,4 +39,18 @@ app.get('/getProfile/:id', function(req, res){
         console.log(err);
     });
 });
+
+app.put('/update/:id', function (req, res) {
+    console.log("update request received");
+    var id = req.params.id;
+    console.log(id);
+    db.expertprofiles.findAndModify({
+        query:{_id: mongojs.ObjectId(id)},
+        update:{$set:{name:req.body.name , skills:req.body.skills, experience:req.body.experience, currentproject:req.body.currentproject,
+        profile:req.body.profile, role:req.body.role }},new : true },function(response){
+        console.log("updated successfully");
+        res.json(response);
+    });
+});
+
 app.listen(3033);
