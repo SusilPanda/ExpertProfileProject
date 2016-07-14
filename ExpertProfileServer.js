@@ -8,6 +8,11 @@ var mongojs = require('mongojs');
 var db = mongojs('expertprofiles', [ 'expertprofiles']);
 var bodyParser = require('body-parser');
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 app.use(express.static(_dirname = '/public'));
 app.use(bodyParser.json());
 
@@ -33,7 +38,6 @@ app.post('/create', function(req, res){
 app.get('/getProfile/:id', function(req, res){
     console.log("got a get Request");
     var id = req.params.id;
-    console.log();
     db.expertprofiles.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
         res.json(doc);
         console.log(err);
@@ -49,6 +53,7 @@ app.put('/update/:id', function (req, res) {
         update:{$set:{name:req.body.name , skills:req.body.skills, experience:req.body.experience, currentproject:req.body.currentproject,
         profile:req.body.profile, role:req.body.role }},new : true },function(response){
         console.log("updated successfully");
+        console.log(response);
         res.json(response);
     });
 });

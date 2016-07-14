@@ -7,11 +7,13 @@
     <link rel="stylesheet" href="css/common.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="css/flat-ui.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="js/jquery-2.2.2.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
     <script type="text/javascript" src="controllers/profileController.js"></script>
+    <script src="js/angular-animate.js"></script>
   </head>
   <body ng-app="userApp" ng-controller="userCtrl" data-ng-init="init(1)">
     <!-- Navigation Bar -->
@@ -100,19 +102,17 @@
               </button>
               <!-- Content -->
         <div class="container text-center">
-                     <div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="expert in experts | filter:userSearch">
-                             <a class="thumbnail" href="#">
-                      <img src="data:image/png;base64,{{ imgsource }}" class="img-circle" height="220" width="220" alt="Avatar" />
-                      <br>
-                      <a  ng-href="expert.htm?id:{{expert._id}}">{{expert.name}}</a>
-                      <br>
-                    </a>
-                  </div>
-                </div>
+          <div ng-repeat="expert in experts | filter:userSearch" class="col-lg-3 col-md-4 col-xs-6 thumb animate" >
+              <div class="well">
+                <img src="data:image/png;base64,{{ imgsource }}" class="img-circle" height="80" width="80" alt="Avatar" />
+                <br>
+                <a  ng-href="expert.htm?id:{{expert._id}}" style="color:#000000">{{expert.name}}</a>
+                <br>
               </div>
-            </div>
+        </div>
       </div>
-      <!-- /#page-content-wrapper -->
+      </div>
+      <!-- /#page-content-wrapper data-ng-init="getImageOnLoad(expert._id)" -->
     </div>
     <!-- /#wrapper -->
   </body>

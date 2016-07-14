@@ -1,4 +1,4 @@
-var app = angular.module('userApp', []);
+var app = angular.module('userApp', ['ngAnimate']);
 var data1 = {
   name: 'default',
   skills: 'default',
@@ -90,7 +90,7 @@ app.controller('userCtrl', function($scope, $http) {
   };
 
   $scope.edit = function (id) {
-    $scope.expert = data1;
+   // $scope.expert = data1;
     console.log(id);
     $http.get('http://localhost:3033/getProfile/' + id).success(function (response) {
       $scope.expert = response;
@@ -100,12 +100,33 @@ app.controller('userCtrl', function($scope, $http) {
   
   $scope.updateProfile = function() {
     console.log($scope.expert._id);
+    var idPrf = $scope.expert._id;
     $http.put('http://localhost:3033/update/' + $scope.expert._id, $scope.expert).success(function (response) {
-      console.log("profile created");
-      $scope.experts = response;
-      //window.location.href = '/ExpertProfileProject/expert.htm';
+      console.log("profile updated");
     });
   };
+
+  var getProfile = function (id) {
+    if(typeof id === 'undefined') {
+      console.log("id is null while getting profile");
+    }else{
+      $http.get('http://localhost:3033/getProfile/' + id).success(function (response) {
+        console.log(response);
+        $scope.expertNew = response;
+        console.log("retrieved profile");
+      });
+    }
+  };
+
+  $scope.getId = function () {
+    var myParam;
+    var currentURL = document.URL;
+    var params = currentURL.substring(currentURL.indexOf('?')+1);
+    // alert(params);
+    var data = params.split(':');
+    myParam = data[1];
+    return myParam;
+  }
 
   $scope.getData = function () {
     $scope.expert = data1;
@@ -116,10 +137,39 @@ app.controller('userCtrl', function($scope, $http) {
     var data = params.split(':');
     myParam = data[1];
    // alert(myParam);
-    $http.get('http://localhost:3033/getProfile/' + myParam).success(function (response) {
-      $scope.expert = response;
-    });
+    if(typeof myParam === 'undefined') {
+      console.log("id is null");
+    }else{
+      $http.get('http://localhost:3033/getProfile/' + myParam).success(function (response) {
+        $scope.expert = response;
+      });
+      getProfileImage(myParam);
+    }
+  };
+  var request = new XMLHttpRequest();
+  //var boundary = this.generateBoundary();
 
+  $scope.uploadImage = function (id) {
+    //request.setRequestHeader("Content-Type", "multipart/form-data");
+    console.log("Going to upload image to server");
+    $http.post('http://localhost:3222/upload?pid='+id).success(function (response) {
+      console.log("profile image uploaded");
+    });
+  };
+  var getProfileImage = function (picId) {
+    $http.get("http://localhost:3222/getImage/"+ picId).success(function(doc) {
+      console.log(doc);
+      $scope.imgsource=doc;
+    })
+        .error(function(data) {
+          console.log('Error: ' + data);
+        });
+
+  };
+
+  $scope.getImageOnLoad = function (picId) {
+    console.log("picId in on load image : ",picId);
+    getProfileImage(picId);
   };
 
 });
