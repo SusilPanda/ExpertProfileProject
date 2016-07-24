@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css"  media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="css/common.css" media="screen" title="no title" charset="utf-8">
   <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
   <link rel="stylesheet" href="css/style.css">
   <script type="text/javascript" src="js/jquery-2.2.2.min.js"></script>
@@ -35,110 +36,313 @@
           <li data-toggle="collapse" data-target=".navbar-collapse.in"><a href="#myAcount"><span class="glyphicon glyphicon-user"></span>  My Account</a></li>
         </ul>
         <form class="navbar-form navbar-right" role="search">
-        <div class="form-group input-group">
-          <input type="text" class="form-control" placeholder="Search.." ng-model="userSearch">
-          <span class="input-group-btn">
-            <button type="button" class="btn btn-default">
-              <span class="glyphicon glyphicon-search"></span>
+          <div class="form-group input-group">
+            <input type="text" class="form-control" placeholder="Search.." ng-model="userSearch">
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span>
+              </button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container text-center">
+    <div class="row">
+      <!-- Lef side Area -->
+      <div class="col-sm-3 well">
+        <div class="well">
+          <h2>{{expert.name}}</h2>
+          <img src="data:image/jpg;base64,{{ imgsource }}" class="img-circle" height="220" width="220" alt="Avatar" />
+          <br><br>
+          <div>
+            <button type="button" class="btn btn-default btn-primary" data-toggle="modal" data-backdrop="static" data-target="#uploadModal">
+              <span class="glyphicon glyphicon-camera"></span>
             </button>
-          </span>
+            <button class="btn btn-warning" data-toggle="modal" data-target="#myModal" ng-click="edit(expert._id)">Edit Profile</button>
+          </div>
+        </div>
+        <br>
+        <div class="well">
+          <p><a href="#">Skills</a></p>
+          <p>
+            <span class="label label-default">Java</span>
+            <span class="label label-primary">C++</span>
+            <span class="label label-success">Eclipse</span>
+            <span class="label label-info">Unix</span>
+            <span class="label label-warning">AngularJs</span>
+            <span class="label label-danger">NodeJs</span>
+          </p>
+        </div>
+        <br>
+        <div class="well">
+          <p><a href="#">Know about me</a></p>
+          <span>Design and Developmens</span>
+          <div class="progress">
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+            aria-valuemin="0" aria-valuemax="100" style="width:40%">
+            40%
+          </div>
+        </div>
+
+        <span>Communication</span>
+        <div class="progress">
+          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50"
+          aria-valuemin="0" aria-valuemax="100" style="width:50%">
+          50%
+        </div>
+      </div>
+
+      <span>Problem Solving and Decision Making</span>
+      <div class="progress">
+        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
+        aria-valuemin="0" aria-valuemax="100" style="width:60%">
+        60%
+      </div>
+    </div>
+
+    <span>Loyal and Dedication</span>
+    <div class="progress">
+      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70"
+      aria-valuemin="0" aria-valuemax="100" style="width:70%">
+      70%
+    </div>
+  </div>
+</div>
+</div>
+<!-- Center Area -->
+<div class="col-sm-7">
+  <div class="row">
+    <div class="col-sm-4">
+      <div style="background:#fff; padding-top:2px">
+        <h4>PROJECTS</h4>
+        <table class="table">
+          <tr>
+            <td>
+              <button type="button" class="btn btn-success">
+                <span class="glyphicon glyphicon-plus"></span>
+              </button>
+            </td>
+            <td>
+              <h4>4</h4>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div style="background:#fff; padding-top:2px">
+        <h4>EXPERIENCE</h4>
+        <table class="table">
+          <tr>
+            <td>
+              <button type="button" class="btn btn-warning">
+                <span class="glyphicon glyphicon-user"></span>
+              </button>
+            </td>
+            <td>
+              <h4>3</h4>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div style="background:#fff; padding-top:2px">
+        <h4>AWARDS</h4>
+        <table class="table">
+          <tr>
+            <td>
+              <button type="button" class="btn btn-danger">
+                <span class="glyphicon glyphicon-gift"></span>
+              </button>
+            </td>
+            <td>
+              <h4>6</h4>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="well">
+        <form>
+          <textarea name="status" rows="3" cols="80"></textarea>
+          <br>
+          <button type="button" class="btn btn-success">
+            Post Status
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="well">
+        <table>
+          <tr>
+            <td>
+              <img src="images/default_profile.jpg" class="img-circle" width="50" height="50" alt="Profile" />
+            </td>
+            <td>
+              <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="well">
+        <table>
+          <tr>
+            <td>
+              <img src="images/default_profile.jpg" class="img-circle" width="50" height="50" alt="Profile" />
+            </td>
+            <td>
+              <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="well">
+        <table>
+          <tr>
+            <td>
+              <img src="images/default_profile.jpg" class="img-circle" width="50" height="50" alt="Profile" />
+            </td>
+            <td>
+              <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="well">
+        <table>
+          <tr>
+            <td>
+              <img src="images/default_profile.jpg" class="img-circle" width="50" height="50" alt="Profile" />
+            </td>
+            <td>
+              <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="well">
+        <table>
+          <tr>
+            <td>
+              <img src="images/default_profile.jpg" class="img-circle" width="50" height="50" alt="Profile" />
+            </td>
+            <td>
+              <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-sm-2 well">
+  <div class="thumbnail">
+    <p>Upcoming Events:</p>
+    <img src="" alt="Hack Day" width="400" height="300">
+    <p><strong>Hack Day</strong></p>
+    <p>Fri. 27 November 2016</p>
+    <button class="btn btn-primary">Info</button>
+  </div>
+  <div class="well">
+    <p>ADS</p>
+  </div>
+  <div class="well">
+    <p>ADS</p>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Update Model -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Update Profile</h4>
+      </div>
+      <form class="form-update">
+        <div class="modal-body">
+          <label>Full Name :</label>
+          <input type="text" class="form-control" name="name" ng-model="expert.name" required autofocus>
+          <label>Skills :</label>
+          <input type="text" class="form-control" ng-model="expert.skills">
+          <label>Experience :</label>
+          <input type="text" class="form-control" ng-model="expert.experience">
+          <label>Current Project :</label>
+          <input type="text" class="form-control" ng-model="expert.currentproject">
+          <label>Profile :</label>
+          <input type="text" class="form-control" ng-model="expert.profile">
+          <label>Role :</label>
+          <input type="text" class="form-control" ng-model="expert.role">
+
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-default btn-primary" type="submit" ng-click="updateProfile()" data-dismiss="modal">Submit </button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </form>
     </div>
   </div>
-</nav>
+</div>
+<!-- End Modal -->
 
-<div class="container text-center">
-  <div class="row">
-    <!-- Lef side Area -->
-    <div class="col-sm-3 well">
-      <div class="well">
-        <p><a href="#">Profile</a></p>
-        <img src="data:image/jpg;base64,{{ imgsource }}" class="img-circle" height="220" width="220" alt="Avatar" />
+<!-- upload image Model -->
+<div id="uploadModal" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Upload Profile Picture</h4>
       </div>
-      <div>
-        <form ref='uploadForm'
-              id='uploadForm'
-              action='http://localhost:3222/upload'
-              method='post'
-              encType="multipart/form-data" >
-          <input type="hidden" name="pid" value="{{expert._id}}" />
-          <input type="file" name="sampleFile" />
-          <input type='submit' value='Upload' />
-        </form>
-    </div>
+      <form ref='uploadForm'
+      id='uploadForm'
+      action='http://localhost:3222/upload'
+      method='post'
+      encType="multipart/form-data" >
+      <div class="modal-body">
+        <input type="hidden" name="pid" value="{{expert._id}}" />
+        <label class="btn btn-default btn-file">
+          Browse Profile Picture<input type="file" name="sampleFile" style="display: none;"/>
+        </label>
       </div>
-    <!-- Center Area -->
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="well">
-          <div class="list-group">
-            <div class="table-responsive">
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Skills</th>
-                    <th>Experience</th>
-                    <th>Current Project</th>
-                    <th>Profile</th>
-                    <th>Role</th>
-                  </tr>
-                </thead>
-                <tbody>    <!--ng-repeat="expert in experts | filter:userSearch"> -->
-                  <tr class="table-condensed text-left animate">
-                    <td>{{expert.name}}</td>
-                    <td>{{expert.skills}}</td>
-                    <td>{{expert.experience}}</td>
-                    <td>{{expert.currentproject}}</td>
-                    <td>{{expert.profile}}</td>
-                    <td>{{expert.role}}</td>
-                    <td><button class="btn btn-warning" data-toggle="modal" data-target="#myModal" ng-click="edit(expert._id)">Edit Profile</button></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-        </div>
+      <div class="modal-footer">
+        <button class="btn btn-default btn-primary" type="submit" data-dismiss="modal">Upload</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
-    </div>
+    </form>
   </div>
 </div>
 </div>
-
-  <!-- Update Model -->
-  <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Update Profile</h4>
-        </div>
-        <form class="form-update">
-          <div class="modal-body">
-            <label>Full Name :</label>
-            <input type="text" class="form-control" name="name" ng-model="expert.name" required autofocus>
-            <label>Skills :</label>
-            <input type="text" class="form-control" ng-model="expert.skills">
-            <label>Experience :</label>
-            <input type="text" class="form-control" ng-model="expert.experience">
-            <label>Current Project :</label>
-            <input type="text" class="form-control" ng-model="expert.currentproject">
-            <label>Profile :</label>
-            <input type="text" class="form-control" ng-model="expert.profile">
-            <label>Role :</label>
-            <input type="text" class="form-control" ng-model="expert.role">
-
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-default btn-primary" type="submit" ng-click="updateProfile()" data-dismiss="modal">Submit </button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!-- End Modal -->
+<!-- End upload end modal -->
 </body>
 </html>
