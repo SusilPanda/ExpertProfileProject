@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="css/flat-ui.min.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="css/style.css">
+    <!--<link rel="stylesheet" href="css/bootstrap.css" >-->
     <script type="text/javascript" src="js/jquery-2.2.2.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
@@ -25,11 +26,30 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#appNavBarSearch">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
         </div>
+        <!-- navBar For Multi Search -->
+        <!--<div class="collapse navbar-collapse" id="appNavBarSearch">
+          <form class="navbar-form navbar-static-top" role="search">
+            <div class="form-group input-group">
+              <input type="text" class="form-control" placeholder="Name.." ng-model="userSearch.expert.name">
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span>
+              </button>
+            </span>
+            </div>
+          </form>
+        </div>-->
+
         <div class="collapse navbar-collapse" id="appNavBar">
           <form class="navbar-form navbar-right" role="search">
           <div class="form-group input-group">
-            <input type="text" class="form-control" placeholder="Search.." ng-model="userSearch">
+            <input type="text" class="form-control" placeholder="Search.." ng-model="userSearch.$">
             <span class="input-group-btn">
               <button type="button" class="btn btn-default">
                 <span class="glyphicon glyphicon-search"></span>
@@ -102,17 +122,19 @@
               </button>
               <!-- Content -->
         <div class="container text-center">
-          <div ng-repeat="expert in experts | filter:userSearch" class="col-lg-3 col-md-4 col-xs-6 thumb animate" >
-              <div class="well">
-                <img src="data:image/png;base64,{{ imgsource }}" class="img-circle" height="80" width="80" alt="Avatar" />
-                <br>
+          <div ng-repeat="expert in experts | filter:userSearch" class="col-lg-2 col-md-4 col-xs-6 thumb animate" >
+              <div class="well" >
+               <img src="files/{{expert._id}}.jpg"  onError="this.onError=null;this.src='images/default_profile.jpg';" class="img-circle" height="100" width="100" alt="Avatar" />
+                  <br>
                 <a  ng-href="expert.htm?id:{{expert._id}}" style="color:#000000">{{expert.name}}</a>
                 <br>
+                <a style="color:#000000">{{expert.experience}}</a>
+                <br>
               </div>
-        </div>
+            </div>
+          </div>
       </div>
-      </div>
-      <!-- /#page-content-wrapper data-ng-init="getImageOnLoad(expert._id)" -->
+      <!-- /#page-content-wrapper data-ng-init="getImageOnLoad(expert._id)"-->
     </div>
     <!-- /#wrapper -->
   </body>

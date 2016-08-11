@@ -52,8 +52,8 @@
   <div class="container text-center">
     <div class="row">
       <!-- Lef side Area -->
-      <div class="col-sm-3 well">
-        <div class="well slideanim slide">
+      <div class="col-sm-3 well slideanim slide">
+        <div class="well">
           <h2>{{expert.name}}</h2>
           <img src="data:image/jpg;base64,{{ imgsource }}" class="img-circle" height="220" width="220" alt="Avatar" />
           <br><br>
@@ -65,19 +65,22 @@
           </div>
         </div>
         <br>
-        <div class="well slideanim slide">
+        <div class="well">
           <p><a href="#">Skills</a></p>
           <p>
             <span class="label label-default">Java</span>
             <span class="label label-primary">C++</span>
             <span class="label label-success">Eclipse</span>
-            <span class="label label-info">Unix</span>
+            <span class="label label-info">Linux</span>
             <span class="label label-warning">AngularJs</span>
             <span class="label label-danger">NodeJs</span>
           </p>
+          <p>
+            <button class="btn btn-warning" data-toggle="modal" data-target="#SkillModal" ng-click="edit(expert._id)">Edit Skills Rating</button>
+          </p>
         </div>
         <br>
-        <div class="well slideanim slide">
+        <div class="well">
           <p><a href="#">Know about me</a></p>
           <span>Design and Developmens</span>
           <div class="progress">
@@ -167,6 +170,55 @@
       </div>
     </div>
   </div>
+  <!-- Start of User Skills Progress Bar-->
+  <div class="well slideanim slide">
+    <p><a href="#">Skills Chart</a></p>
+    <p>
+      <span class="label label-success">Java - {{ expert.skills.java}}</span>
+      <div class="progress">
+      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+           aria-valuemin="0" aria-valuemax="100" ng-style="{'width': expert.skills.java*10 + '%'}">
+        {{ expert.skills.java*10 + "%"}}
+      </div>
+      </div>
+     <p><span class="label label-primary">C++</span></p>
+    <div class="progress">
+      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40"
+           aria-valuemin="0" aria-valuemax="100" ng-style="{'width': expert.skills.cpp*10 + '%'}">
+        {{expert.skills.cpp*10 + '%'}}
+      </div>
+    </div>
+      <p><span class="label label-success">Eclipse</span></p>
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+           aria-valuemin="0" aria-valuemax="100" ng-style="{'width': expert.skills.eclipse*10 + '%'}">
+        {{expert.skills.eclipse*10 + '%'}}
+      </div>
+    </div>
+      <p><span class="label label-info">Linux</span></p>
+    <div class="progress">
+      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40"
+           aria-valuemin="0" aria-valuemax="100" ng-style="{'width': expert.skills.linux*10 + '%'}">
+        {{expert.skills.linux*10 + '%'}}
+      </div>
+    </div>
+     <p> <span class="label label-warning">AngularJs</span></p>
+    <div class="progress">
+      <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40"
+           aria-valuemin="0" aria-valuemax="100" ng-style="{'width': expert.skills.angularjs*10 + '%'}">
+        {{expert.skills.angularjs*10 + '%'}}
+      </div>
+    </div>
+      <p><span class="label label-danger">NodeJs</span></p>
+    <div class="progress">
+      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40"
+           aria-valuemin="0" aria-valuemax="100" ng-style="{'width': expert.skills.nodejs*10 + '%'}">
+        {{expert.skills.nodejs*10 + '%'}}
+      </div>
+    </div>
+    </p>
+  </div>
+  <!-- End of User Skills Progress Bar-->
   <div class="row">
     <div class="col-sm-12">
       <div class="well slideanim slide">
@@ -194,70 +246,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="well slideanim slide">
-        <table>
-          <tr>
-            <td>
-              <img src="images/default_profile.jpg" class="img-circle" width="50" height="50" alt="Profile" />
-            </td>
-            <td>
-              <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="well slideanim slide">
-        <table>
-          <tr>
-            <td>
-              <img src="images/default_profile.jpg" class="img-circle" width="50" height="50" alt="Profile" />
-            </td>
-            <td>
-              <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="well slideanim slide">
-        <table>
-          <tr>
-            <td>
-              <img src="images/default_profile.jpg" class="img-circle" width="50" height="50" alt="Profile" />
-            </td>
-            <td>
-              <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="well slideanim slide">
-        <table>
-          <tr>
-            <td>
-              <img src="images/default_profile.jpg" class="img-circle" width="50" height="50" alt="Profile" />
-            </td>
-            <td>
-              <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </div>
+
 </div>
 <div class="col-sm-2 well slideanim slide">
   <div class="thumbnail">
@@ -276,8 +265,6 @@
 </div>
 </div>
 </div>
-</div>
-</div>
 
 <!-- Update Model -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -292,9 +279,9 @@
       <form class="form-update">
         <div class="modal-body">
           <label>Full Name :</label>
-          <input type="text" class="form-control" name="name" ng-model="expert.name" required autofocus>
-          <label>Skills :</label>
-          <input type="text" class="form-control" ng-model="expert.skills">
+          <input type="text" class="form-control" name="name" ng-model="expert.name"  required autofocus> <!-- ng-readonly="true"-->
+         <!-- <label>Skills :</label>
+          <input type="text" class="form-control" ng-model="expert.skills">-->
           <label>Experience :</label>
           <input type="text" class="form-control" ng-model="expert.experience">
           <label>Current Project :</label>
@@ -336,7 +323,7 @@
         </label>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-default btn-primary" type="submit" data-dismiss="modal">Upload</button>
+        <button class="btn btn-default btn-primary" type="submit">Upload</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </form>
@@ -344,5 +331,41 @@
 </div>
 </div>
 <!-- End upload end modal -->
+
+<!-- Update Skill Chart-->
+  <div id="SkillModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Update Skills : Rate YourSelf OutOff 10</h4>
+        </div>
+        <form class="form-update">
+          <div class="modal-body">
+            <label>Java :</label>
+            <input type="text" class="form-control" ng-model="expert.skills.java" required autofocus>
+            <label>C++ :</label>
+            <input type="text" class="form-control" ng-model="expert.skills.cpp">
+            <label>Linux :</label>
+            <input type="text" class="form-control" ng-model="expert.skills.linux">
+            <label>Eclipse</label>
+            <input type="text" class="form-control" ng-model="expert.skills.eclipse">
+            <label>Angular JS</label>
+            <input type="text" class="form-control" ng-model="expert.skills.angularjs">
+            <label>Node JS</label>
+            <input type="text" class="form-control" ng-model="expert.skills.nodejs">
+
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-default btn-primary" type="submit" ng-click="updateSkill()" data-dismiss="modal">Submit</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- End Modal of Skill Chart-->
 </body>
 </html>

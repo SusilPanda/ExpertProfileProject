@@ -56,7 +56,8 @@ var data = [ {
     role: 'SSE'
   }
 ];
-app.controller('userCtrl', function($scope, $http) {
+app.controller('userCtrl', function($scope, $http) {// , $rootElement) {
+ // $rootElement.data("$$ngAnimateState").running = false;
   $scope.experts = data;
   $scope.init = function(value) {
     if(value == 1) {
@@ -64,7 +65,7 @@ app.controller('userCtrl', function($scope, $http) {
         //$scope.message = response;
         console.log("profiles retrieved");
         $scope.experts = response;
-        getImage();
+        //getAllImage();
       });
     }
     else{
@@ -97,10 +98,17 @@ app.controller('userCtrl', function($scope, $http) {
     });
 
   };
+
+  $scope.updateSkill = function() {
+    console.log($scope.expert._id);
+    console.log($scope.expert.skills);
+    $http.put('http://localhost:3033/updateSkill/' + $scope.expert._id, $scope.expert.skills).success(function (response) {
+      console.log("profile updated");
+    });
+  };
   
   $scope.updateProfile = function() {
     console.log($scope.expert._id);
-    var idPrf = $scope.expert._id;
     $http.put('http://localhost:3033/update/' + $scope.expert._id, $scope.expert).success(function (response) {
       console.log("profile updated");
     });
@@ -172,4 +180,24 @@ app.controller('userCtrl', function($scope, $http) {
     getProfileImage(picId);
   };
 
+  var getAllImage = function () {
+    $http.get("http://localhost:3222/getAllImages").success(function(doc) {
+      console.log(doc);
+      $scope.imgsource=doc;
+    })
+        .error(function(data) {
+          console.log('Error: ' + data);
+        });
+  }
 });
+
+app.directive('animateOnLoad',['$animateCss', function($animateCss) {
+  return {
+    'link': function(scope, element) {
+      $animateCss(element, {
+        'event': 'enter',
+        structural: true
+      }).start();
+    }
+  };
+}]);
