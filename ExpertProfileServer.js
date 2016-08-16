@@ -47,7 +47,7 @@ app.put('/update/:id', function (req, res) {
     db.expertprofiles.findAndModify({
         query:{_id: mongojs.ObjectId(id)},
         update:{$set:{name:req.body.name , experience:req.body.experience, currentproject:req.body.currentproject,
-        profile:req.body.profile, role:req.body.role }},new : true },function(response){
+        profile:req.body.profile, role:req.body.role, awards:req.body.awards, certification:req.body.certification }},new : true },function(response){
         console.log("updated successfully");
         console.log(response);
         res.json(response);
@@ -63,6 +63,18 @@ app.put('/updateSkill/:id', function (req, res) {
         update:{$set:{skills :{java:req.body.java, cpp:req.body.cpp, linux:req.body.linux, angularjs:req.body.angularjs,
             nodejs:req.body.nodejs, eclipse:req.body.eclipse } }},new : true },function(response){
         console.log("updated successfully");
+        console.log(response);
+        res.json(response);
+    });
+});
+app.put('/updateCertification/:id', function (req, res) {
+    console.log("update certification request received");
+    var id = req.params.id;
+    console.log(req.body);
+    db.expertprofiles.findAndModify({
+        query:{_id: mongojs.ObjectId(id)},
+        update:{$set:{certification :{name:req.body.name } }},new : true },function(response){
+        console.log("updated certification successfully");
         console.log(response);
         res.json(response);
     });

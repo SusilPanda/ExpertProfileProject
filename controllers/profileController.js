@@ -58,6 +58,8 @@ var data = [ {
 ];
 app.controller('userCtrl', function($scope, $http) {// , $rootElement) {
  // $rootElement.data("$$ngAnimateState").running = false;
+  $scope.search = {};
+  $scope.property = "name";
   $scope.experts = data;
   $scope.init = function(value) {
     if(value == 1) {
@@ -110,6 +112,13 @@ app.controller('userCtrl', function($scope, $http) {// , $rootElement) {
   $scope.updateProfile = function() {
     console.log($scope.expert._id);
     $http.put('http://localhost:3033/update/' + $scope.expert._id, $scope.expert).success(function (response) {
+      console.log("profile updated");
+    });
+  };
+  $scope.updateCertificates = function() {
+    console.log($scope.expert._id);
+    console.log($scope.expert.certification);
+    $http.put('http://localhost:3033/updateCertification/' + $scope.expert._id, $scope.expert.certification).success(function (response) {
       console.log("profile updated");
     });
   };
@@ -189,7 +198,17 @@ app.controller('userCtrl', function($scope, $http) {// , $rootElement) {
           console.log('Error: ' + data);
         });
   }
+
+  $scope.customComparator = function(input) {
+    console.log(input);
+    return typeof input === 'object' ? false : angular.equals(input.experience,$scope.expert.experience);
+  };
+  $scope.selectedProfile={};
+  $scope.filterExpression = function(input) {
+    return (input.profile === $scope.selectedProfile.profile);
+  };
 });
+
 
 app.directive('animateOnLoad',['$animateCss', function($animateCss) {
   return {
@@ -200,4 +219,5 @@ app.directive('animateOnLoad',['$animateCss', function($animateCss) {
       }).start();
     }
   };
+
 }]);

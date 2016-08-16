@@ -33,23 +33,46 @@
           </button>
         </div>
         <!-- navBar For Multi Search -->
-        <!--<div class="collapse navbar-collapse" id="appNavBarSearch">
-          <form class="navbar-form navbar-static-top" role="search">
-            <div class="form-group input-group">
-              <input type="text" class="form-control" placeholder="Name.." ng-model="userSearch.expert.name">
-            <span class="input-group-btn">
-              <button type="button" class="btn btn-default">
-                <span class="glyphicon glyphicon-search"></span>
-              </button>
-            </span>
+        <div class="navbar-right">
+          <form class="form-inline">
+            <div class="form-group">
+              <div class="col-md-3"><label style="color: ivory"><i class="fa fa-question-circle fa-fw" ></i> Profile List</label></div>
+              <div class="col-md-4">
+                <select class="form-control" ng-model="selectedProfile" ng-options="expert.profile for expert in experts">
+                  <option value="">Select</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-3"><label style="color: ivory"><i class="fa fa-question-circle fa-fw"></i> Experience List</label></div>
+              <div class="col-md-4">
+                <select class="form-control" ng-model="selectedExp" ng-options="expert.experience for expert in experts | filter : filterExpression">
+                  <option value="">Select</option>
+                </select>
+              </div>
             </div>
           </form>
-        </div>-->
+        </div>
 
         <div class="collapse navbar-collapse" id="appNavBar">
           <form class="navbar-form navbar-right" role="search">
           <div class="form-group input-group">
-            <input type="text" class="form-control" placeholder="Search.." ng-model="userSearch.$">
+            <div class="input-group-btn" >
+              <select class="form-control btn-success" ng-model="property">
+                <option>name</option>
+                <option>skills</option>
+                <option>profile</option>
+              </select>
+            </div>
+            <input class="form-control" placeholder="Enter here" ng-model="search[property]">
+
+            </div>
+            <input type="text" class="form-inline" placeholder="Search Any.." ng-model="expert.$" > :
+            <input type="text" class="form-inline" placeholder="Profile only.." ng-model="expert.profile"> :
+            <input type="text" class="form-inline" placeholder="Exprience only.." ng-model="expert.experience"> :
+            <!--<select class="form-inline" ng-model="expert.experience" ng-options="expert.experience for expert in experts | filter : expert.profile">
+              <option value="">Select</option>
+            </select>-->
             <span class="input-group-btn">
               <button type="button" class="btn btn-default">
                 <span class="glyphicon glyphicon-search"></span>
@@ -73,21 +96,18 @@
           <div class="row">
             <div class="profile-header-container">
     		        <div class="profile-header-img">
-                  <img class="img-circle" src="images/default_profile.jpg" />
+                  <img class="img-circle" src="images/admin.jpg" />
                 </div>
               </div>
 	        </div>
           <li>
-            <a href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+            <a href="index.htm"><i class="fa fa-fw fa-home"></i> Home</a>
           </li>
           <li>
-            <a href="#"><i class="fa fa-fw fa-folder"></i> Page one</a>
+            <a href="post.html" ><i class="fa fa-fw fa-folder"></i> Post Requirement</a>
           </li>
           <li>
             <a href="#"><i class="fa fa-fw fa-file-o"></i> Second page</a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-fw fa-cog"></i> Third page</a>
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> Dropdown <span class="caret"></span></a>
@@ -99,15 +119,6 @@
               <li><a href="#">Separated link</a></li>
               <li><a href="#">One more separated link</a></li>
             </ul>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-fw fa-bank"></i> Page four</a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-fw fa-dropbox"></i> Page 5</a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-fw fa-twitter"></i> Last page</a>
           </li>
         </ul>
       </nav>
@@ -122,7 +133,7 @@
               </button>
               <!-- Content -->
         <div class="container text-center">
-          <div ng-repeat="expert in experts | filter:userSearch" class="col-lg-2 col-md-4 col-xs-6 thumb animate" >
+          <div ng-repeat="expert in experts | filter : selectedExp " class="col-lg-2 col-md-4 col-xs-6 thumb animate" >
               <div class="well" >
                <img src="files/{{expert._id}}.jpg"  onError="this.onError=null;this.src='images/default_profile.jpg';" class="img-circle" height="100" width="100" alt="Avatar" />
                   <br>
@@ -137,5 +148,6 @@
       <!-- /#page-content-wrapper data-ng-init="getImageOnLoad(expert._id)"-->
     </div>
     <!-- /#wrapper -->
+
   </body>
 </html>

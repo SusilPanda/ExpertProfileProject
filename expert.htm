@@ -79,63 +79,28 @@
             <button class="btn btn-warning" data-toggle="modal" data-target="#SkillModal" ng-click="edit(expert._id)">Edit Skills Rating</button>
           </p>
         </div>
-        <br>
-        <div class="well">
-          <p><a href="#">Know about me</a></p>
-          <span>Design and Developmens</span>
-          <div class="progress">
-            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
-            aria-valuemin="0" aria-valuemax="100" style="width:40%">
-            40%
-          </div>
-        </div>
-
-        <span>Communication</span>
-        <div class="progress">
-          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50"
-          aria-valuemin="0" aria-valuemax="100" style="width:50%">
-          50%
-        </div>
-      </div>
-
-      <span>Problem Solving and Decision Making</span>
-      <div class="progress">
-        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
-        aria-valuemin="0" aria-valuemax="100" style="width:60%">
-        60%
-      </div>
     </div>
-
-    <span>Loyal and Dedication</span>
-    <div class="progress">
-      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70"
-      aria-valuemin="0" aria-valuemax="100" style="width:70%">
-      70%
-    </div>
-  </div>
-</div>
-</div>
 <!-- Center Area -->
 <div class="col-sm-7">
   <div class="row">
-    <div class="col-sm-4 slideanim slide">
+    <div class="col-sm-3 slideanim slide">
       <div style="background:#fff; padding-top:2px">
-        <h4>PROJECTS</h4>
+        <h4>PROJECT</h4>
         <table class="table">
           <tr>
             <td>
               <button type="button" class="btn btn-success">
-                <span class="glyphicon glyphicon-plus"></span>
+                <span class="glyphicon glyphicon-briefcase"></span>
               </button>
             </td>
             <td>
-              <h4>4</h4>
+              <h4>{{expert.currentproject}}</h4>
             </td>
           </tr>
         </table>
       </div>
     </div>
-    <div class="col-sm-4 slideanim slide">
+    <div class="col-sm-3 slideanim slide">
       <div style="background:#fff; padding-top:2px">
         <h4>EXPERIENCE</h4>
         <table class="table">
@@ -146,13 +111,30 @@
               </button>
             </td>
             <td>
-              <h4>3</h4>
+              <h4>{{expert.experience}}</h4>
             </td>
           </tr>
         </table>
       </div>
     </div>
-    <div class="col-sm-4 slideanim slide">
+      <div class="col-sm-3 slideanim slide">
+          <div style="background:#fff; padding-top:2px">
+              <h4>PROFILE</h4>
+              <table class="table">
+                  <tr>
+                      <td>
+                          <button type="button" class="btn btn-danger">
+                              <span class="glyphicon glyphicon-envelope"></span>
+                          </button>
+                      </td>
+                      <td>
+                          <h4>{{expert.profile}}</h4>
+                      </td>
+                  </tr>
+              </table>
+          </div>
+      </div>
+    <div class="col-sm-3 slideanim slide">
       <div style="background:#fff; padding-top:2px">
         <h4>AWARDS</h4>
         <table class="table">
@@ -163,12 +145,13 @@
               </button>
             </td>
             <td>
-              <h4>6</h4>
+              <h4>{{expert.awards}}</h4>
             </td>
           </tr>
         </table>
       </div>
     </div>
+
   </div>
   <!-- Start of User Skills Progress Bar-->
   <div class="well slideanim slide">
@@ -250,18 +233,53 @@
 </div>
 <div class="col-sm-2 well slideanim slide">
   <div class="thumbnail">
-    <p>Upcoming Events:</p>
-    <img src="" alt="Hack Day" width="400" height="300">
-    <p><strong>Hack Day</strong></p>
-    <p>Fri. 27 November 2016</p>
-    <button class="btn btn-primary">Info</button>
+    <p>Certifications :</p>
+      <button type="button" class="btn btn-danger">
+      <span class="glyphicon glyphicon-education"></span>
+          </button>
+      <div>
+          <span><strong>{{expert.certification}}</strong></span>
+      </div>
+<!--
+      <p>
+          <button class="btn btn-warning" data-toggle="modal" data-target="#CertificateModal" ng-click="edit(expert._id)">Edit Certification</button>
+      </p>
+-->
   </div>
-  <div class="well slideanim slide">
-    <p>ADS</p>
-  </div>
-  <div class="well slideanim slide">
-    <p>ADS</p>
-  </div>
+  <div class="well">
+    <p><a href="#">Know about me</a></p>
+    <span>Design and Developmens</span>
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+           aria-valuemin="0" aria-valuemax="100" style="width:40%">
+        40%
+      </div>
+    </div>
+
+    <span>Communication</span>
+    <div class="progress">
+      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50"
+           aria-valuemin="0" aria-valuemax="100" style="width:50%">
+        50%
+      </div>
+    </div>
+
+    <span>Problem Solving and Decision Making</span>
+    <div class="progress">
+      <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
+           aria-valuemin="0" aria-valuemax="100" style="width:60%">
+        60%
+      </div>
+    </div>
+
+    <span>Loyal and Dedication</span>
+    <div class="progress">
+      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70"
+           aria-valuemin="0" aria-valuemax="100" style="width:70%">
+        70%
+      </div>
+    </div>
+    </div>
 </div>
 </div>
 </div>
@@ -290,7 +308,10 @@
           <input type="text" class="form-control" ng-model="expert.profile">
           <label>Role :</label>
           <input type="text" class="form-control" ng-model="expert.role">
-
+            <label>Awards :</label>
+            <input type="text" class="form-control" ng-model="expert.awards">
+            <label>Certificates :</label>
+            <input type="text" class="form-control" ng-model="expert.certification">
         </div>
         <div class="modal-footer">
           <button class="btn btn-default btn-primary" type="submit" ng-click="updateProfile()" data-dismiss="modal">Submit </button>
@@ -367,5 +388,28 @@
     </div>
   </div>
   <!-- End Modal of Skill Chart-->
+  <!-- Modal Edit Certification-->
+  <div id="CertificateModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Update Certification</h4>
+      </div>
+      <form class="form-update">
+          <div class="modal-body" ng-repeat="certificate in expert.certification">
+              <label>Name :</label>
+              <input type="text" class="form-control" name="name" ng-model="certificate.name"  required autofocus> <!-- ng-readonly="true"-->
+
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-default btn-primary" type="submit" ng-click="updateCertificates()" data-dismiss="modal">Submit </button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+      </form>
+  </div>
+  </div>
+  </div>
+  <!-- End Modal Certification -->
 </body>
 </html>
