@@ -32,7 +32,7 @@
             <span class="icon-bar"></span>
           </button>
         </div>
-        <!-- navBar For Multi Search -->
+       <!-- &lt;!&ndash; navBar For Multi Search &ndash;&gt;
         <div class="navbar-right">
           <form class="form-inline">
             <div class="form-group">
@@ -52,21 +52,21 @@
               </div>
             </div>
           </form>
-        </div>
+        </div>-->
 
         <div class="collapse navbar-collapse" id="appNavBar">
           <form class="navbar-form navbar-right" role="search">
           <div class="form-group input-group">
-            <div class="input-group-btn" >
+            <!--<div class="input-group-btn" >
               <select class="form-control btn-success" ng-model="property">
                 <option>name</option>
                 <option>skills</option>
                 <option>profile</option>
               </select>
             </div>
-            <input class="form-control" placeholder="Enter here" ng-model="search[property]">
+            <input class="form-control" placeholder="Enter here" ng-model="search[property]">-->
 
-            </div>
+
             <input type="text" class="form-inline" placeholder="Search Any.." ng-model="expert.$" > :
             <input type="text" class="form-inline" placeholder="Profile only.." ng-model="expert.profile"> :
             <input type="text" class="form-inline" placeholder="Exprience only.." ng-model="expert.experience"> :
@@ -74,11 +74,14 @@
               <option value="">Select</option>
             </select>-->
             <span class="input-group-btn">
-              <button type="button" class="btn btn-default">
+              <button type="button" class="btn btn-default" data-toggle="modal" data-target="#AdvSearchModal">
                 <span class="glyphicon glyphicon-search"></span>
               </button>
             </span>
-          </div>
+           <!-- <p class="navbar-right">
+              <button class="btn btn-block" data-toggle="modal" data-target="#AdvSearchModal" ng-click="#">Advance Search</button>
+            </p>-->
+         </div>
         </form>
       </div>
     </div>
@@ -133,7 +136,8 @@
               </button>
               <!-- Content -->
         <div class="container text-center">
-          <div ng-repeat="expert in experts | filter : selectedExp " class="col-lg-2 col-md-4 col-xs-6 thumb animate" >
+          <!--<div ng-repeat="expert in experts | filter : {profile:expert.profile, experience:expert.experience} " class="col-lg-2 col-md-4 col-xs-6 thumb animate" >-->
+          <div ng-repeat="expert in experts | filter : expert " class="col-lg-2 col-md-4 col-xs-6 thumb animate" >
               <div class="well" >
                <img src="files/{{expert._id}}.jpg"  onError="this.onError=null;this.src='images/default_profile.jpg';" class="img-circle" height="100" width="100" alt="Avatar" />
                   <br>
@@ -148,6 +152,58 @@
       <!-- /#page-content-wrapper data-ng-init="getImageOnLoad(expert._id)"-->
     </div>
     <!-- /#wrapper -->
+    <!-- Modal Advance search -->
+    <div id="AdvSearchModal" class="modal fade " role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Advance Search</h4>
+          </div>
+          <form class="form-inline">
+            <div class="form-group">
+              <div class="col-md-3"><label style="color: ivory"><i class="fa fa-question-circle fa-fw" ></i> Profile List</label></div>
+              <div class="col-md-4">
+                <select class="form-control" ng-model="selectedProfile" ng-options="expert.profile for expert in experts">
+                  <option value="">Select</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-3"><label style="color: ivory"><i class="fa fa-question-circle fa-fw"></i> Experience List</label></div>
+              <div class="col-md-4">
+                <select class="form-control" ng-model="selectedSearch" ng-options="expert.experience for expert in experts | filter : filterExpression">
+                  <option value="">Select</option>
+                </select>
+              </div>
+            </div>
 
+            <div class="form-group input-group">
+              <div class="input-group-btn" >
+                <select class="form-control btn-success" ng-model="property">
+                  <option>name</option>
+                  <option>skills</option>
+                  <option>profile</option>
+                </select>
+              </div>
+              <input class="form-control" placeholder="Enter here" ng-model="search[property]">
+
+            </div>
+
+            <br><br>
+            <input type="text" class="form-inline" placeholder="Search Any.." ng-model="expert.$" > :
+            <input type="text" class="form-inline" placeholder="Profile only.." ng-model="expert.profile"> :
+            <input type="text" class="form-inline" placeholder="Exprience only.." ng-model="expert.experience"> :
+
+            <div class="modal-footer">
+              <button class="btn btn-default btn-primary" type="submit" ng-click="searchProfile(selectedSearch._id)" data-dismiss="modal">Submit </button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- End of Advance search -->
   </body>
 </html>

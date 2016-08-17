@@ -207,6 +207,18 @@ app.controller('userCtrl', function($scope, $http) {// , $rootElement) {
   $scope.filterExpression = function(input) {
     return (input.profile === $scope.selectedProfile.profile);
   };
+
+  $scope.searchProfile = function(id) {
+    console.log(id);
+    console.log($scope.selectedSearch.experience);
+    $http.get('http://localhost:3033/search/' + $scope.selectedSearch._id, $scope.selectedSearch).success(function (response) {
+     var str = [];
+      str.push(response);
+      $scope.experts = str;
+      console.log("profile fetched");
+    });
+  };
+
 });
 
 

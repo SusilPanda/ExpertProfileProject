@@ -80,4 +80,18 @@ app.put('/updateCertification/:id', function (req, res) {
     });
 });
 
+app.get('/search/:id', function(req, res){
+    console.log("got a get Request");
+    var id = req.params.id;
+    console.log(id);
+    console.log(req.body);
+   // var query = {};
+    //query[experience] = "4.4";
+    db.expertprofiles.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
+        res.json(doc);
+        console.log(doc);
+        console.log(err);
+    });
+});
+
 app.listen(3033);
