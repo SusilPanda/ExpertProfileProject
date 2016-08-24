@@ -218,6 +218,24 @@ app.controller('userCtrl', function($scope, $http) {// , $rootElement) {
       console.log("profile fetched");
     });
   };
+  
+  $scope.sendEmail = function () {
+    console.log("text for emailbody : " + $scope.text);
+    var list = [];
+    var arr = {message : $scope.text};
+    list.push(arr);
+    console.log(arr);
+    $http.post('http://localhost:3033/sendEmail/' + $scope.expert.emailid, arr ).success(function (response) {
+ console.log(response);
+      if(response.status == 'error'){
+        $scope.message = "Error Message Not Sent";
+      }else{
+        $scope.message = $scope.text;
+        $scope.text = "";
+      }
+
+    });
+  };
 
 });
 

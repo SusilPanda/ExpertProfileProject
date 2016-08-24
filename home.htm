@@ -161,23 +161,25 @@
             <h4 class="modal-title">Advance Search</h4>
           </div>
           <form class="form-inline">
+            <div class="modal-body">
+
             <div class="form-group">
-              <div class="col-md-3"><label style="color: ivory"><i class="fa fa-question-circle fa-fw" ></i> Profile List</label></div>
-              <div class="col-md-4">
+              <div class="col-md-4"><label><i class="fa fa-question-circle fa-fw" ></i>Profile</label></div>
+              <div class="col-md-3">
                 <select class="form-control" ng-model="selectedProfile" ng-options="expert.profile for expert in experts">
                   <option value="">Select</option>
                 </select>
               </div>
             </div>
             <div class="form-group">
-              <div class="col-md-3"><label style="color: ivory"><i class="fa fa-question-circle fa-fw"></i> Experience List</label></div>
-              <div class="col-md-4">
+              <div class="col-md-5"><label><i class="fa fa-question-circle fa-fw"></i>Experience</label></div>
+              <div class="col-md-3">
                 <select class="form-control" ng-model="selectedSearch" ng-options="expert.experience for expert in experts | filter : filterExpression">
                   <option value="">Select</option>
                 </select>
               </div>
             </div>
-
+              <div class="form-group"></div>
             <div class="form-group input-group">
               <div class="input-group-btn" >
                 <select class="form-control btn-success" ng-model="property">
@@ -189,16 +191,11 @@
               <input class="form-control" placeholder="Enter here" ng-model="search[property]">
 
             </div>
-
-            <br><br>
-            <input type="text" class="form-inline" placeholder="Search Any.." ng-model="expert.$" > :
-            <input type="text" class="form-inline" placeholder="Profile only.." ng-model="expert.profile"> :
-            <input type="text" class="form-inline" placeholder="Exprience only.." ng-model="expert.experience"> :
-
             <div class="modal-footer">
               <button class="btn btn-default btn-primary" type="submit" ng-click="searchProfile(selectedSearch._id)" data-dismiss="modal">Submit </button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
+              </div>
           </form>
         </div>
       </div>

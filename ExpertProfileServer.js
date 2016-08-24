@@ -5,6 +5,8 @@ var mongojs = require('mongojs');
 var db = mongojs('expertprofiles', [ 'expertprofiles']);
 var bodyParser = require('body-parser');
 
+var nodemailer = require('nodemailer');
+
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
@@ -46,8 +48,8 @@ app.put('/update/:id', function (req, res) {
     console.log(id);
     db.expertprofiles.findAndModify({
         query:{_id: mongojs.ObjectId(id)},
-        update:{$set:{name:req.body.name , experience:req.body.experience, currentproject:req.body.currentproject,
-        profile:req.body.profile, role:req.body.role, awards:req.body.awards, certification:req.body.certification }},new : true },function(response){
+        update:{$set:{name:req.body.name , experience:req.body.experience, currentproject:req.body.currentproject, emailid:req.body.emailid, mobilenumber:req.body.mobilenumber,
+        profile:req.body.profile, role:req.body.role, awards:req.body.awards, certification:req.body.certification, testframework:req.body.testframework }},new : true },function(response){
         console.log("updated successfully");
         console.log(response);
         res.json(response);
@@ -60,7 +62,7 @@ app.put('/updateSkill/:id', function (req, res) {
     console.log(req.body);
     db.expertprofiles.findAndModify({
         query:{_id: mongojs.ObjectId(id)},
-        update:{$set:{skills :{java:req.body.java, cpp:req.body.cpp, linux:req.body.linux, angularjs:req.body.angularjs,
+        update:{$set:{skills :{java:req.body.java, cpp:req.body.cpp, linux:req.body.linux, python:req.body.python, angularjs:req.body.angularjs,
             nodejs:req.body.nodejs, eclipse:req.body.eclipse } }},new : true },function(response){
         console.log("updated successfully");
         console.log(response);
@@ -93,5 +95,35 @@ app.get('/search/:id', function(req, res){
         console.log(err);
     });
 });
+
+app.post('/sendEmail/:id', handleEmailSend); // handle the route at yourdomain.com/sayHello
+
+function handleEmailSend(req, res) {
+    console.log("Email recieved to send : " + req.params.id);
+    console.log(req.body.message);
+    var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'expertprofile123@gmail.com', // admin email id
+            pass: 'Unity@123' // admin password
+        }
+    });
+    var mailOptions = {
+        from: 'expertprofile123@gmail.com', // sender address
+        to: req.params.id, // list of receivers
+        subject: 'Requirement..', // Subject line
+        text: req.body.message//, // plaintext body
+    };
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            console.log(error);
+            res.json({status: 'error'});
+        }else{
+            console.log('Message sent: ' + info.response);
+            res.json({status: info.response});
+        };
+    });
+}
+
 
 app.listen(3033);
