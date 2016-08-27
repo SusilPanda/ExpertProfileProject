@@ -237,6 +237,37 @@ app.controller('userCtrl', function($scope, $http) {// , $rootElement) {
     });
   };
 
+  //method to send post requirement
+  $scope.sendRequirement = function () {
+    console.log("text for requirement post : " + $scope.post);
+    var list = [];
+    var arr = {requirement : $scope.post};
+   // list.push(arr);
+    console.log(arr);
+    $http.post('http://localhost:3044/createPost' , $scope.post ).success(function (response) {
+      console.log(response);
+      if(response.status == 'error'){
+        $scope.message = "Error while requirement post";
+      }else{
+        //$scope.posts = response;
+        console.log("post requirement successful");
+      }
+
+    });
+  };
+
+  // method to get All requirement post
+  $scope.getAllPost = function () {
+    console.log("fetching all the requirement post");
+
+    $http.get('http://localhost:3044/getAll').success(function (response) {
+
+      $scope.posts = response;
+
+    });
+
+  };
+
 });
 
 

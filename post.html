@@ -14,7 +14,7 @@
     <script type="text/javascript" src="controllers/profileController.js"></script>
     <script type="text/javascript" src="js/angular-animate.js"></script>
 </head>
-<body id="home" ng-app="userApp" ng-controller="userCtrl" >
+<body id="home" ng-app="userApp" ng-controller="userCtrl" ng-init="getAllPost()">
 <div id="wrapper">
     <div class="overlay"></div>
 <!-- Navigation Bar -->
@@ -51,23 +51,24 @@
     <div class="col-sm-12 animate-enter">
         <div class="well slideanim slide">
             <form>
-                <textarea name="status" rows="3" cols="80"></textarea>
+                <textarea name="status" ng-model="post.requirement" rows="3" cols="80"></textarea>
                 <br>
-                <button type="button" class="btn btn-success">
+                <button type="button" class="btn btn-success" ng-click="sendRequirement()">
                     Post Status
                 </button>
             </form>
         </div>
     </div>
     <div class="col-sm-12">
-        <div class="well slideanim slide">
+        <div class="well slideanim slide" ng-repeat="post in posts">
             <table>
                 <tr>
                     <td>
                         <img src="images/default_profile.jpg" class="img-circle" width="50" height="50" alt="Profile" />
                     </td>
+                    <td> - </td>
                     <td>
-                        <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+                        {{post.requirement}}
                     </td>
                 </tr>
             </table>
