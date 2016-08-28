@@ -26,9 +26,20 @@ app.get('/getAll', function(req, res){
     });
 });
 app.post('/createPost', function(req, res){
+    var currentdate = new Date();
+    var dateTime = currentdate.getDate() + "/"
+        + (currentdate.getMonth()+1)  + "/"
+        + currentdate.getFullYear() + " @ "
+        + currentdate.getHours() + ":"
+        + currentdate.getMinutes() + ":"
+        + currentdate.getSeconds();
     console.log("I got a create Request to post requirement");
     console.log(req.body);
-    db.expertprofilespost.insert(req.body, function(err, doc){
+    var collection = { requirement:  req.body.requirement,
+        datetime: dateTime};
+    console.log(collection);
+
+    db.expertprofilespost.insert(collection, function(err, doc){
         if(err){
             console.log(err);
         }
