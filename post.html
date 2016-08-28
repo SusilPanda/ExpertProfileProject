@@ -14,7 +14,7 @@
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="controllers/profileController.js"></script>
     <script type="text/javascript" src="js/angular-animate.js"></script>
-
+    <script type="text/javascript" src="js/common.js"></script>
 </head>
 <body id="home" ng-app="userApp" ng-controller="userCtrl" ng-init="getAllPost()">
 <div id="wrapper">
@@ -49,11 +49,31 @@
     </div>
 </nav>
 <div class="container text-center">
+
+<div id="this-carousel-id" class="carousel slide"><!-- class of slide for animation -->
+  <div class="carousel-inner">
+  <div class="item active"><!-- class of active since it's the first item -->
+    <div class="carousel-caption">
+    <p>Caption text here asdasd asdada asdad asdada adadlkjhk vzvzv uoosa fzvzv zxvzvz ffsbxnjkn sjdfsjhf sfafa</p>
+    </div>
+  </div>
+  <div class="item">
+    <div class="carousel-caption">
+    <p>Caption text here adaad asfws fsgsg erww dgsgsg sdsgsg fsfs asfaf afasfaf aafasf afafaf</p>
+    </div>
+  </div>
+  <!-- /.carousel-inner -->
+  <!--  Next and Previous controls below
+    href values must reference the id for this carousel -->
+  <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+</div><!-- /.carousel -->
+<br><br>
 <div class="row">
     <div class="col-sm-12 animate-enter">
         <div class="well slideanim slide">
             <form>
-                <textarea name="status" ng-model="post.requirement" rows="3" cols="80"></textarea>
+                <textarea name="status" ng-model="post.requirement" rows="3" cols="150"></textarea>
                 <br>
                 <!--<input type="hidden" ng-model="post.datetime" value="{{dateTime}}">-->
                 <button type="button" class="btn btn-success" ng-click="sendRequirement()">

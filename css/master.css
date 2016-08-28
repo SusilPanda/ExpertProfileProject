@@ -56,3 +56,13 @@
 .table tbody tr:hover td, .table tbody tr:hover th {
   background-color: #eeeeea;
 }
+
+.item{
+    background-color:#cc88cc;
+    display:block;
+}
+
+.carousel-caption{
+    color:#000;
+    position:static;
+}
