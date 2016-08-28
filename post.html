@@ -8,13 +8,15 @@
     <link rel="stylesheet" href="css/bootstrap.min.css"  media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="css/common.css" media="screen" title="no title" charset="utf-8">
+   <!-- <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">-->
     <script type="text/javascript" src="js/jquery-2.2.2.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="controllers/profileController.js"></script>
     <script type="text/javascript" src="js/angular-animate.js"></script>
+
 </head>
-<body id="home" ng-app="userApp" ng-controller="userCtrl" >
+<body id="home" ng-app="userApp" ng-controller="userCtrl" ng-init="getAllPost()">
 <div id="wrapper">
     <div class="overlay"></div>
 <!-- Navigation Bar -->
@@ -51,54 +53,41 @@
     <div class="col-sm-12 animate-enter">
         <div class="well slideanim slide">
             <form>
-                <textarea name="status" rows="3" cols="80"></textarea>
+                <textarea name="status" ng-model="post.requirement" rows="3" cols="80"></textarea>
                 <br>
-                <button type="button" class="btn btn-success">
+                <!--<input type="hidden" ng-model="post.datetime" value="{{dateTime}}">-->
+                <button type="button" class="btn btn-success" ng-click="sendRequirement()">
                     Post Status
                 </button>
             </form>
         </div>
     </div>
     <div class="col-sm-12">
-        <div class="well slideanim slide">
-            <table>
+        <div class="well slideanim slide" ng-repeat="post in posts | orderBy : '-datetime'">
+           <!-- <table class="">
                 <tr>
                     <td>
                         <img src="images/default_profile.jpg" class="img-circle" width="50" height="50" alt="Profile" />
                     </td>
+                    <td> Date : </td>
+                    <td><span><strong>{{post.datetime}}</strong></span></td>
+                    <td> Message : </td>
                     <td>
-                        <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+                        <span><strong>{{post.requirement}}</strong></span>
                     </td>
                 </tr>
-            </table>
+            </table>-->
+             <div class="list-inline">
+                <p> <img src="images/default_profile.jpg" class="img-circle" width="50" height="50" alt="Profile" /></p>
+                <p>Date :
+                    <span><strong>{{post.datetime}}</strong></span></p>
+                <p>Message :
+                    <span><strong>{{post.requirement}}</strong></span></p>
+              </div>
         </div>
     </div>
 </div>
 </div>
-</div>
-<!-- Modal Edit Certification-->
-<div id="PostModal" class="modal fade " role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Update Certification</h4>
-            </div>
-            <form class="form-update">
-                <div class="modal-body">
-                    <label>Name :</label>
-                    <input type="text" class="form-control" name="name" ng-model="expert.name"  required autofocus> <!-- ng-readonly="true"-->
 
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-default btn-primary" type="submit" ng-click="updateCertificates()" data-dismiss="modal">Submit </button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- End Modal Certification -->
 </body>
 </html>

@@ -207,6 +207,73 @@ app.controller('userCtrl', function($scope, $http) {// , $rootElement) {
   $scope.filterExpression = function(input) {
     return (input.profile === $scope.selectedProfile.profile);
   };
+
+  $scope.searchProfile = function(id) {
+    console.log(id);
+    console.log($scope.selectedSearch.experience);
+    $http.get('http://localhost:3033/search/' + $scope.selectedSearch._id, $scope.selectedSearch).success(function (response) {
+     var str = [];
+      str.push(response);
+      $scope.experts = str;
+      console.log("profile fetched");
+    });
+  };
+  
+  $scope.sendEmail = function () {
+    console.log("text for emailbody : " + $scope.text);
+    var list = [];
+    var arr = {message : $scope.text};
+    list.push(arr);
+    console.log(arr);
+    $http.post('http://localhost:3033/sendEmail/' + $scope.expert.emailid, arr ).success(function (response) {
+ console.log(response);
+      if(response.status == 'error'){
+        $scope.message = "Error Message Not Sent";
+      }else{
+        $scope.message = $scope.text;
+        $scope.text = "";
+      }
+
+    });
+  };
+
+  //method to send post requirement
+  $scope.sendRequirement = function () {
+    console.log("text for requirement post : " + $scope.post);
+    // list.push(arr);
+    //console.log(arr);
+    $http.post('http://localhost:3044/createPost' , $scope.post ).success(function (response) {
+      console.log(response);
+      if(response.status == 'error'){
+        $scope.message = "Error while requirement post";
+      }else{
+        //$scope.posts = response;
+        console.log("post requirement successful");
+      }
+
+    });
+  };
+
+  var getDate = function () {
+    var d = new Date();
+    var n = d.getDate();
+    console.log("current date : "+ n);
+    $scope.dateTime = n;
+  };
+
+  // method to get All requirement post
+  $scope.getAllPost = function () {
+    console.log("fetching all the requirement post");
+
+    $http.get('http://localhost:3044/getAll').success(function (response) {
+
+      $scope.posts = response;
+      getDate();
+
+    });
+
+  };
+
 });
 
 

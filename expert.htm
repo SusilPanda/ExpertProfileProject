@@ -61,23 +61,42 @@
             <button type="button" class="btn btn-default btn-primary" data-toggle="modal" data-backdrop="static" data-target="#uploadModal">
               <span class="glyphicon glyphicon-camera"></span>
             </button>
-            <button class="btn btn-warning" data-toggle="modal" data-target="#myModal" ng-click="edit(expert._id)">Edit Profile</button>
+            <button class="btn btn-warning" data-toggle="modal" data-target="#myModal" ng-click="edit(expert._id)"><strong>Edit Profile</strong></button>
           </div>
         </div>
         <br>
         <div class="well">
           <p><a href="#">Skills</a></p>
           <p>
-            <span class="label label-default">Java</span>
+            <span class="label label-success">Java</span>
             <span class="label label-primary">C++</span>
-            <span class="label label-success">Eclipse</span>
+            <span class="label label-default">Eclipse</span>
             <span class="label label-info">Linux</span>
-            <span class="label label-warning">AngularJs</span>
+            <span class="label label-warning">Python</span>
+            <span class="label label-primary">AngularJs</span>
             <span class="label label-danger">NodeJs</span>
           </p>
+          <br>
           <p>
-            <button class="btn btn-warning" data-toggle="modal" data-target="#SkillModal" ng-click="edit(expert._id)">Edit Skills Rating</button>
+            <button class="btn btn-info" data-toggle="modal" data-target="#SkillModal" ng-click="edit(expert._id)"><strong>Edit Skills Rating</strong></button>
           </p>
+        </div>
+        <div class="well">
+          <p><strong>EMAIL ID</strong></p>
+             <button type="button" class="btn btn-success">
+              <span class="glyphicon glyphicon-envelope"></span>
+            </button>
+            <div>
+              <span><strong>{{expert.emailid}}</strong></span>
+            </div>
+            <br>
+          <p><strong>MOBILE NUMBER</strong></p>
+            <button type="button" class="btn btn-primary">
+              <span class="glyphicon glyphicon-phone"></span>
+            </button>
+            <div>
+              <span><strong>{{expert.mobilenumber}}</strong></span>
+            </div>
         </div>
     </div>
 <!-- Center Area -->
@@ -88,15 +107,13 @@
         <h4>PROJECT</h4>
         <table class="table">
           <tr>
-            <td>
               <button type="button" class="btn btn-success">
                 <span class="glyphicon glyphicon-briefcase"></span>
               </button>
-            </td>
-            <td>
+            </tr>
+            <tr>
               <h4>{{expert.currentproject}}</h4>
-            </td>
-          </tr>
+            </tr>
         </table>
       </div>
     </div>
@@ -105,15 +122,13 @@
         <h4>EXPERIENCE</h4>
         <table class="table">
           <tr>
-            <td>
               <button type="button" class="btn btn-warning">
                 <span class="glyphicon glyphicon-user"></span>
               </button>
-            </td>
-            <td>
+            </tr>
+            <tr>
               <h4>{{expert.experience}}</h4>
-            </td>
-          </tr>
+            </tr>
         </table>
       </div>
     </div>
@@ -122,15 +137,13 @@
               <h4>PROFILE</h4>
               <table class="table">
                   <tr>
-                      <td>
                           <button type="button" class="btn btn-danger">
-                              <span class="glyphicon glyphicon-envelope"></span>
+                              <span class="glyphicon glyphicon-blackboard"></span>
                           </button>
-                      </td>
-                      <td>
+                       </tr>
+                      <tr>
                           <h4>{{expert.profile}}</h4>
-                      </td>
-                  </tr>
+                      </tr>
               </table>
           </div>
       </div>
@@ -139,14 +152,12 @@
         <h4>AWARDS</h4>
         <table class="table">
           <tr>
-            <td>
               <button type="button" class="btn btn-danger">
                 <span class="glyphicon glyphicon-gift"></span>
               </button>
-            </td>
-            <td>
+            </tr>
+            <tr>
               <h4>{{expert.awards}}</h4>
-            </td>
           </tr>
         </table>
       </div>
@@ -155,9 +166,9 @@
   </div>
   <!-- Start of User Skills Progress Bar-->
   <div class="well slideanim slide">
-    <p><a href="#">Skills Chart</a></p>
+    <p><a href="#"><strong>Skills Chart</strong></a></p>
     <p>
-      <span class="label label-success">Java - {{ expert.skills.java}}</span>
+      <span class="label label-success">Java</span>
       <div class="progress">
       <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
            aria-valuemin="0" aria-valuemax="100" ng-style="{'width': expert.skills.java*10 + '%'}">
@@ -166,28 +177,35 @@
       </div>
      <p><span class="label label-primary">C++</span></p>
     <div class="progress">
-      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40"
+      <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40"
            aria-valuemin="0" aria-valuemax="100" ng-style="{'width': expert.skills.cpp*10 + '%'}">
         {{expert.skills.cpp*10 + '%'}}
       </div>
     </div>
-      <p><span class="label label-success">Eclipse</span></p>
+      <p><span class="label label-default">Eclipse</span></p>
     <div class="progress">
-      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+      <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="40"
            aria-valuemin="0" aria-valuemax="100" ng-style="{'width': expert.skills.eclipse*10 + '%'}">
         {{expert.skills.eclipse*10 + '%'}}
       </div>
     </div>
-      <p><span class="label label-info">Linux</span></p>
+      <p><span class="label label-info">Linux/Shell</span></p>
     <div class="progress">
       <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40"
            aria-valuemin="0" aria-valuemax="100" ng-style="{'width': expert.skills.linux*10 + '%'}">
         {{expert.skills.linux*10 + '%'}}
       </div>
     </div>
-     <p> <span class="label label-warning">AngularJs</span></p>
+    <p><span class="label label-warning">Python</span></p>
     <div class="progress">
       <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40"
+           aria-valuemin="0" aria-valuemax="100" ng-style="{'width': expert.skills.python*10 + '%'}">
+        {{expert.skills.python*10 + '%'}}
+      </div>
+    </div>
+     <p> <span class="label label-primary">AngularJs</span></p>
+    <div class="progress">
+      <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40"
            aria-valuemin="0" aria-valuemax="100" ng-style="{'width': expert.skills.angularjs*10 + '%'}">
         {{expert.skills.angularjs*10 + '%'}}
       </div>
@@ -206,10 +224,10 @@
     <div class="col-sm-12">
       <div class="well slideanim slide">
         <form>
-          <textarea name="status" rows="3" cols="80"></textarea>
+          <textarea name="emailBody" ng-model="text" rows="3" cols="80"></textarea>
           <br>
-          <button type="button" class="btn btn-success">
-            Post Status
+          <button type="button" class="btn btn-success" ng-click="sendEmail()">
+            <strong>Send Email</strong>
           </button>
         </form>
       </div>
@@ -219,10 +237,10 @@
         <table>
           <tr>
             <td>
-              <img src="images/default_profile.jpg" class="img-circle" width="50" height="50" alt="Profile" />
+              Your Last Sent Message :
             </td>
             <td>
-              <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+              {{ message}}
             </td>
           </tr>
         </table>
@@ -233,12 +251,12 @@
 </div>
 <div class="col-sm-2 well slideanim slide">
   <div class="thumbnail">
-    <p>Certifications :</p>
-      <button type="button" class="btn btn-danger">
-      <span class="glyphicon glyphicon-education"></span>
+    <p><strong>ROLE</strong></p>
+      <button type="button" class="btn btn-info">
+      <span class="glyphicon glyphicon-barcode"></span>
           </button>
       <div>
-          <span><strong>{{expert.certification}}</strong></span>
+          <span><strong>{{expert.role}}</strong></span>
       </div>
 <!--
       <p>
@@ -246,9 +264,32 @@
       </p>
 -->
   </div>
+  <div class="thumbnail">
+    <p><strong>CERTIFICATION</strong></p>
+    <button type="button" class="btn btn-danger">
+      <span class="glyphicon glyphicon-education"></span>
+    </button>
+    <div>
+      <span><strong>{{expert.certification}}</strong></span>
+    </div>
+    <!--
+          <p>
+              <button class="btn btn-warning" data-toggle="modal" data-target="#CertificateModal" ng-click="edit(expert._id)">Edit Certification</button>
+          </p>
+    -->
+  </div>
+  <div class="well">
+    <p><strong>TEST FRAMEWORK</strong></p>
+    <button type="button" class="btn btn-success">
+      <span class="glyphicon glyphicon-ok-sign"></span>
+    </button>
+    <div>
+      <span><strong>{{expert.testframework}}</strong></span>
+    </div>
+  </div>
   <div class="well">
     <p><a href="#">Know about me</a></p>
-    <span>Design and Developmens</span>
+    <span>Design and Developments</span>
     <div class="progress">
       <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
            aria-valuemin="0" aria-valuemax="100" style="width:40%">
@@ -280,6 +321,7 @@
       </div>
     </div>
     </div>
+
 </div>
 </div>
 </div>
@@ -302,6 +344,10 @@
           <input type="text" class="form-control" ng-model="expert.skills">-->
           <label>Experience :</label>
           <input type="text" class="form-control" ng-model="expert.experience">
+          <label>Email ID :</label>
+          <input type="text" class="form-control" ng-model="expert.emailid">
+          <label>Mobile Number :</label>
+          <input type="text" class="form-control" ng-model="expert.mobilenumber">
           <label>Current Project :</label>
           <input type="text" class="form-control" ng-model="expert.currentproject">
           <label>Profile :</label>
@@ -312,6 +358,8 @@
             <input type="text" class="form-control" ng-model="expert.awards">
             <label>Certificates :</label>
             <input type="text" class="form-control" ng-model="expert.certification">
+          <label>Test Framework :</label>
+          <input type="text" class="form-control" ng-model="expert.testframework">
         </div>
         <div class="modal-footer">
           <button class="btn btn-default btn-primary" type="submit" ng-click="updateProfile()" data-dismiss="modal">Submit </button>
@@ -369,8 +417,10 @@
             <input type="text" class="form-control" ng-model="expert.skills.java" required autofocus>
             <label>C++ :</label>
             <input type="text" class="form-control" ng-model="expert.skills.cpp">
-            <label>Linux :</label>
+            <label>Linux/Shell :</label>
             <input type="text" class="form-control" ng-model="expert.skills.linux">
+            <label>Python :</label>
+            <input type="text" class="form-control" ng-model="expert.skills.python">
             <label>Eclipse</label>
             <input type="text" class="form-control" ng-model="expert.skills.eclipse">
             <label>Angular JS</label>
