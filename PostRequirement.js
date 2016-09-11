@@ -34,7 +34,7 @@ app.post('/createPost', function(req, res){
         + currentdate.getMinutes() + ":"
         + currentdate.getSeconds();
     console.log("I got a create Request to post requirement");
-    console.log(req.body);
+    //console.log(req.body);
     var collection = { requirement:  req.body.requirement,
         datetime: dateTime};
     console.log(collection);
