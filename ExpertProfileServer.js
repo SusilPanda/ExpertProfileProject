@@ -96,6 +96,12 @@ app.get('/search/:id', function(req, res){
     });
 });
 
+app.get('/test', function(req, res){
+    console.log("got a get Request");
+    res.json({status: 'success'});
+
+});
+
 app.post('/sendEmail/:id', handleEmailSend); // handle the route at yourdomain.com/sayHello
 
 function handleEmailSend(req, res) {
